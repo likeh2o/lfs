@@ -1,0 +1,16 @@
+系统
+	ubuntu 13.04
+分区
+	swap:8G
+	/
+
+2.2
+新建分区
+	因为没有预留分区，所以只能从现在的系统中调整出一个空闲分区出来，还好有足够的swap分区
+	安装Gpartend，调整swap为新分区准备4G空间
+命令
+	fdisk -l 
+	fcdisk ... new->primary->write
+
+2.3
+
