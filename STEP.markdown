@@ -1,3 +1,6 @@
+## 记录说明
+翻译文档已经很清晰了，只记录必要步骤以及碰到问题的解决方法
+
 ## 环境
 * 系统 
 	* ubuntu 13.04
@@ -43,3 +46,29 @@ lfs分区名称
 	Creating journal (32768 blocks): 完成
 	Writing superblocks and filesystem accounting information: 完成 
 ````
+* debugfs -R feature /dev/sda3
+````
+	debugfs 1.42.5 (29-Jul-2012)
+	Filesystem features: has_journal ext_attr resize_inode dir_index filetype sparse_super large_file
+````
+* 使用宿主系统swap，否则：mkswap /dev/xxx
+
+## 2.4
+* export LFS=/mnt/lfs (该命令放入.bashrc)
+* mkdir -pv $LFS
+* mount -v -t ext3 /dev/sda3 $LFS
+* /sbin/swapon -v /dev/sda1
+直接使用这个命令会提示“swapon failed: 设备或资源忙”，用gparted停用swap，命令通过，先记着，后续看原因
+* mount命令查看mount状态
+
+## 3.1
+* mkdir -v $LFS/sources
+* chmod -v a+wt $LFS/sources
+### 获取文件列表,文件对应的md5校验码 (睡觉去，这网速要下好一会儿)
+* wget http://www.linuxfromscratch.org/lfs/view/7.3/wget-list
+* wget http://www.linuxfromscratch.org/lfs/view/7.3/md5sums
+* wget -i wget-list -P $LFS/sources
+### 校验 (一般都不会有问题)
+* pushd $LFS/sources
+* md5sum -c md5sums
+* popd 
