@@ -18,7 +18,7 @@ lfs分区名称
 
 ## 2.3
 * mke2fs -jv /dev/sda3
-<pre>
+````
 	mke2fs 1.42.5 (29-Jul-2012)
 	fs_types for mke2fs.conf resolution: 'ext3'
 	warning: 255 blocks unused.
@@ -42,4 +42,4 @@ lfs分区名称
 	正在写入inode表: 完成                            
 	Creating journal (32768 blocks): 完成
 	Writing superblocks and filesystem accounting information: 完成 
-</pre>
+````
