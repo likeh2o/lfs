@@ -67,10 +67,10 @@ lfs分区名称
 
 ###### 获取文件列表,文件对应的md5校验码 (睡觉去，这网速要下好一会儿)
 * wget http://www.linuxfromscratch.org/lfs/view/7.3/wget-list
-* wget http://www.linuxfromscratch.org/lfs/view/7.3/md5sums
 * wget -i wget-list -P $LFS/sources
 
 ###### 校验 (一般都不会有问题)
 * pushd $LFS/sources
+* wget http://www.linuxfromscratch.org/lfs/view/7.3/md5sums
 * md5sum -c md5sums
 * popd 
