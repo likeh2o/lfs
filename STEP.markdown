@@ -147,7 +147,7 @@ tar -Jxf ../gmp-5.1.1.tar.xz
 mv -v gmp-5.1.1 gmp
 tar -zxf ../mpc-1.0.1.tar.gz
 mv -v mpc-1.0.1 mpc
-
+
 for file in \
  $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h)
 do
@@ -220,10 +220,33 @@ cd ../gcc-build
     make install
       
     # 测试安装是否正确
+    
     echo 'main(){}' > dummy.c
     $LFS_TGT-gcc dummy.c
     readelf -l a.out | grep ': /tools'
-        [Requesting program interpreter: /tools/lib64/ld-linux-x86-64.so.2]
+        [Requesting program interpreter: /tools/lib64/ld-linux-x86-64.so.2]
     rm -v dummy.c a.out
 
-## 5.8 
+
+## 5.8 Binutils
+
+    mkdir -v ../binutils-build
+    cd ../binutils-build
+    CC=$LFS_TGT-gcc            \
+    AR=$LFS_TGT-ar             \
+    RANLIB=$LFS_TGT-ranlib     \
+    ../binutils-2.23.1/configure \
+      --prefix=/tools        \
+      --disable-nls          \
+      --with-lib-path=/tools/lib
+      
+    make 
+    make install
+    
+    # Now prepare the linker for the “Re-adjusting” phase in the next chapter
+    make -C ld clean
+    make -C ld LIB_PATH=/usr/lib:/lib
+    cp -v ld/ld-new /tools/bin
+    
+    
+## 5.9
