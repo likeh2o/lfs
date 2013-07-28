@@ -117,3 +117,12 @@ EOF
 ## 4.4 咱是双核 	
 * export MAKEFLAGS='-j 2' 
 * make -j2
+
+
+## 5.4 Binutils 第一遍
+````
+tar -xvf binutils-2.23.1.tar.bz2
+cd binutils-2.23.1
+mkdir -v ../binutils-build
+````
+
