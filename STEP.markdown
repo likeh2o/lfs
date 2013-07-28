@@ -77,9 +77,11 @@ lfs分区名称
 * popd 
 ###### 之前不知道gnu是何物...
 	* http://www.gnu.org
+
 ## 4.2
 * mkdir -v $LFS/tools
 * ln -sv $LFS/tools /
+
 ## 4.3
 * groupadd lfs
 * useradd -s /bin/bash -g lfs -m -k /dev/null lfs
