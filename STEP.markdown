@@ -1,8 +1,9 @@
 ## 记录说明
-翻译文档已经很清晰了，只记录必要步骤以及碰到问题的解决方法
+readme中的翻译文档已经很清晰了，这里只记录必要步骤以及碰到问题的解决方法
 
 ## 环境
 * 系统 
+	* ThinkPad-X61 Intel(R) Core(TM)2 Duo CPU     T7300  @ 2.00GHz
 	* ubuntu 13.04
 * 分区 
 	* /
@@ -113,6 +114,6 @@ EOF
 ````
 * source ~/.bash_profile
 
-## 4.4 咱是 ThinkPad-X61 双核 	
+## 4.4 咱是双核 	
 * export MAKEFLAGS='-j 2' 
 * make -j2
