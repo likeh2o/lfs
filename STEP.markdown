@@ -82,7 +82,7 @@ lfs分区名称
 * mkdir -v $LFS/tools
 * ln -sv $LFS/tools /
 
-## 4.3
+## 4.3 设置环境变量
 * groupadd lfs
 * useradd -s /bin/bash -g lfs -m -k /dev/null lfs
 * passwd lfs
@@ -97,6 +97,7 @@ cat > ~/.bash_profile << "EOF"
 exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash
 EOF
 ````
+* set +h 关闭bash的hash功能
 ````
 cat > ~/.bashrc << "EOF"
 set +h
