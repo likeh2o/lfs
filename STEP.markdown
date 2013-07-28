@@ -219,7 +219,9 @@ cd ../gcc-build
     make 
     make install
       
-    # 测试安装是否正确
+      
+测试安装是否正确
+    
     
     echo 'main(){}' > dummy.c
     $LFS_TGT-gcc dummy.c
@@ -243,10 +245,52 @@ cd ../gcc-build
     make 
     make install
     
-    # Now prepare the linker for the “Re-adjusting” phase in the next chapter
+Now prepare the linker for the “Re-adjusting” phase in the next chapter
+
     make -C ld clean
     make -C ld LIB_PATH=/usr/lib:/lib
     cp -v ld/ld-new /tools/bin
     
     
-## 5.9
+## 5.9 GCC 看得迷惑
+
+    cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
+      `dirname $($LFS_TGT-gcc -print-libgcc-file-name)`/include-fixed/limits.h
+      
+    cp -v gcc/Makefile.in{,.tmp}
+    sed 's/^T_CFLAGS =$/& -fomit-frame-pointer/' gcc/Makefile.in.tmp \
+      > gcc/Makefile.in
+      
+    for file in \
+    $(find gcc/config -name linux64.h -o -name linux.h -o -name sysv4.h
+    do
+      cp -uv $file{,.orig}
+      sed -e 's@/lib\(64\)\?\(32\)\?/ld@/tools&@g' \
+          -e 's@/usr@/tools@g' $file.orig > $file
+          echo '
+      #undef STANDARD_STARTFILE_PREFIX_1
+      #undef STANDARD_STARTFILE_PREFIX_2
+      #define STANDARD_STARTFILE_PREFIX_1 "/tools/lib/"
+      #define STANDARD_STARTFILE_PREFIX_2 ""' >> $file
+        touch $file.orig
+    done
+	
+下面这些不用处理，用第一次安装时候的源文件目录即可
+
+    tar -Jxf ../mpfr-3.1.1.tar.xz
+    mv -v mpfr-3.1.1 mpfr
+    tar -Jxf ../gmp-5.1.1.tar.xz
+    mv -v gmp-5.1.1 gmp
+    tar -zxf ../mpc-1.0.1.tar.gz
+    mv -v mpc-1.0.1 mpc
+    
+不要编译.info文件
+
+    sed -i 's/BUILD_INFO=info/BUILD_INFO=/' gcc/configure
+    
+第一次编译用文件夹删除
+
+    mkdir -v ../gcc-build
+    cd ../gcc-build
+    
+    
