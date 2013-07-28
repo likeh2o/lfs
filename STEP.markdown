@@ -75,3 +75,5 @@ lfs分区名称
 * wget http://www.linuxfromscratch.org/lfs/view/7.3/md5sums
 * md5sum -c md5sums
 * popd 
+###### 之前不知道gnu是何物...
+	* http://www.gnu.org
