@@ -187,4 +187,6 @@ cd ../gcc-build
     --enable-languages=c       \
     --with-mpfr-include=$(pwd)/../gcc-4.7.2/mpfr/src \
     --with-mpfr-lib=$(pwd)/mpfr/src/.libs
+    
+    ln -sv libgcc.a `$LFS_TGT-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
 ````
