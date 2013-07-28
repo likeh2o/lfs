@@ -97,7 +97,9 @@ cat > ~/.bash_profile << "EOF"
 exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash
 EOF
 ````
+
 * set +h 关闭bash的hash功能
+
 ````
 cat > ~/.bashrc << "EOF"
 set +h
@@ -109,3 +111,4 @@ PATH=/tools/bin:/bin:/usr/bin
 export LFS LC_ALL LFS_TGT PATH
 EOF
 ````
+* source ~/.bash_profile
