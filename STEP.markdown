@@ -350,4 +350,10 @@ Now prepare the linker for the “Re-adjusting” phase in the next chapter
 
 	sudo apt-get install byacc flex
 	
+## 5.29 sed
+因为没有空间可用了，删除sources下面所有的文件夹
+
+	for i in `ls -l|grep drwxr-xr-x|awk '{print $9}'`;do rm -rf $i; done;
 	
+## 5.31 textinfo
+编译的时候提示perl版本不够，又重新编译了perl才通过
