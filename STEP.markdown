@@ -89,3 +89,22 @@ lfs分区名称
 * chown -v lfs $LFS/tools
 * chown -v lfs $LFS/sources
 * su - lfs
+
+## 4.4
+###### 注意/etc/profile,/etc/bashrc,.bash_profile,.bashrc的区别
+````
+cat > ~/.bash_profile << "EOF"
+exec env -i HOME=$HOME TERM=$TERM PS1='\u:\w\$ ' /bin/bash
+EOF
+````
+````
+cat > ~/.bashrc << "EOF"
+set +h
+umask 022
+LFS=/mnt/lfs
+LC_ALL=POSIX
+LFS_TGT=$(uname -m)-lfs-linux-gnu
+PATH=/tools/bin:/bin:/usr/bin
+export LFS LC_ALL LFS_TGT PATH
+EOF
+````
