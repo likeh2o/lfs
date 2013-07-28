@@ -113,6 +113,6 @@ EOF
 ````
 * source ~/.bash_profile
 
-## 4.4 ThinkPad-X61 双核 	
+## 4.4 咱是 ThinkPad-X61 双核 	
 * export MAKEFLAGS='-j 2' 
 * make -j2
