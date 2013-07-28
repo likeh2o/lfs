@@ -139,6 +139,7 @@ make install
 ````
 ## 5.5 GCC 第一遍
 * 流水帐
+
 ````
 tar -Jxf ../mpfr-3.1.1.tar.xz
 mv -v mpfr-3.1.1 mpfr
