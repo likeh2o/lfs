@@ -288,9 +288,44 @@ Now prepare the linker for the “Re-adjusting” phase in the next chapter
 
     sed -i 's/BUILD_INFO=info/BUILD_INFO=/' gcc/configure
     
-第一次编译用文件夹删除
+第一次编译用文件夹需删除
 
     mkdir -v ../gcc-build
     cd ../gcc-build
+    CC=$LFS_TGT-gcc \
+	AR=$LFS_TGT-ar                  \
+	RANLIB=$LFS_TGT-ranlib          \
+	../gcc-4.7.2/configure          \
+	    --prefix=/tools             \
+	    --with-local-prefix=/tools  \
+	    --with-native-system-header-dir=/tools/include \
+	    --enable-clocale=gnu        \
+	    --enable-shared             \
+	    --enable-threads=posix      \
+	    --enable-__cxa_atexit       \
+	    --enable-languages=c,c++    \
+	    --disable-libstdcxx-pch     \
+	    --disable-multilib          \
+	    --disable-bootstrap         \
+	    --disable-libgomp           \
+	    --with-mpfr-include=$(pwd)/../gcc-4.7.2/mpfr/src \
+	    --with-mpfr-lib=$(pwd)/mpfr/src/.libs
+    make
+    make install
     
+    ln -sv gcc /tools/bin/cc
+    
+测试
+
+	echo 'main(){}' > dummy.c
+	cc dummy.c
+	readelf -l a.out | grep ': /tools'
+	
+输出
+
+	 [Requesting program interpreter: /tools/lib64/ld-linux-x86-64.so.2]
+	 
+	
+## 5.10    
+
     
