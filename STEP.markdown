@@ -58,7 +58,7 @@ lfs分区名称
 * mkdir -pv $LFS
 * mount -v -t ext3 /dev/sda3 $LFS
 * /sbin/swapon -v /dev/sda1
-直接使用这个命令会提示“swapon failed: 设备或资源忙”，用gparted停用swap，命令通过，先记着，后续看原因
+	* 直接使用这个命令会提示“swapon failed: 设备或资源忙”，用gparted停用swap，命令通过，先记着，后续看原因
 * mount命令查看mount状态
 
 ## 3.1
@@ -67,6 +67,7 @@ lfs分区名称
 
 ###### 获取文件列表,文件对应的md5校验码 (睡觉去，这网速要下好一会儿)
 * wget http://www.linuxfromscratch.org/lfs/view/7.3/wget-list
+	* 列表里有些文件已经不存在了，这里有全部的文件：ftp://ftp.lfs-matrix.net/pub/lfs/lfs-packages/7.3/
 * wget -i wget-list -P $LFS/sources
 
 ###### 校验 (一般都不会有问题)
