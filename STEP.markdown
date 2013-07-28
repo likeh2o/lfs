@@ -357,3 +357,10 @@ Now prepare the linker for the “Re-adjusting” phase in the next chapter
 	
 ## 5.31 textinfo
 编译的时候提示perl版本不够，又重新编译了perl才通过
+
+## 5.34
+后续使用root操作
+
+	chown -R root:root $LFS/tools
+	
+	
