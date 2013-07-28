@@ -190,3 +190,5 @@ cd ../gcc-build
     
     ln -sv libgcc.a `$LFS_TGT-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
 ````
+
+## 5.6 这一节比较迷茫
