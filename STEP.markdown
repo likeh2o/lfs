@@ -188,6 +188,9 @@ cd ../gcc-build
     --with-mpfr-include=$(pwd)/../gcc-4.7.2/mpfr/src \
     --with-mpfr-lib=$(pwd)/mpfr/src/.libs
     
+    make
+    make install
+    
     ln -sv libgcc.a `$LFS_TGT-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
 ````
 
@@ -203,7 +206,7 @@ cd ../gcc-build
     mkdir -v ../glibc-build
     cd ../glibc-build
     ../glibc-2.17/configure                             \
-      --prefix=/tools                                 \
+      --prefix=/tools                                 \
       --host=$LFS_TGT                                 \
       --build=$(../glibc-2.17/scripts/config.guess) \
       --disable-profile                               \
@@ -212,5 +215,8 @@ cd ../gcc-build
       libc_cv_forced_unwind=yes                       \
       libc_cv_ctors_header=yes                        \
       libc_cv_c_cleanup=yes
+      
+      make 
+      make install
 
 ## 5.8 
