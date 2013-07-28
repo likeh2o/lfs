@@ -191,7 +191,7 @@ cd ../gcc-build
     ln -sv libgcc.a `$LFS_TGT-gcc -print-libgcc-file-name | sed 's/libgcc/&_eh/'`
 ````
 
-## 5.6 Linux API Headers （linux内核暴露的接口）这一节比较迷茫
+## 5.6 Linux API Headers (内核暴露的接口) 这一节比较迷茫
 
     make mrproper # Delete the current configuration, and all generated files
     make headers_check
