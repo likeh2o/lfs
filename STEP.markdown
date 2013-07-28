@@ -132,6 +132,9 @@ cd ../binutils-build/
     --target=$LFS_TGT          \
     --disable-nls              \
     --disable-werror
-    
+make
+# x86_64
+mkdir -v /tools/lib && ln -sv lib /tools/lib64
+make install
 ````
 
