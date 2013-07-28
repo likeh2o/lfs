@@ -198,3 +198,19 @@ cd ../gcc-build
     make INSTALL_HDR_PATH=dest headers_install
     cp -rv dest/include/* /tools/include
     
+## 5.7 Glibc 提供内存分配，文件读写等等基础
+
+    mkdir -v ../glibc-build
+    cd ../glibc-build
+    ../glibc-2.17/configure                             \
+      --prefix=/tools                                 \
+      --host=$LFS_TGT                                 \
+      --build=$(../glibc-2.17/scripts/config.guess) \
+      --disable-profile                               \
+      --enable-kernel=2.6.25                          \
+      --with-headers=/tools/include                   \
+      libc_cv_forced_unwind=yes                       \
+      libc_cv_ctors_header=yes                        \
+      libc_cv_c_cleanup=yes
+
+## 5.8 
