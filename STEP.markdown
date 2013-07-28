@@ -216,7 +216,14 @@ cd ../gcc-build
       libc_cv_ctors_header=yes                        \
       libc_cv_c_cleanup=yes
       
-      make 
-      make install
+    make 
+    make install
+      
+    # 测试安装是否正确
+    echo 'main(){}' > dummy.c
+    $LFS_TGT-gcc dummy.c
+    readelf -l a.out | grep ': /tools'
+        [Requesting program interpreter: /tools/lib64/ld-linux-x86-64.so.2]
+    rm -v dummy.c a.out
 
 ## 5.8 
