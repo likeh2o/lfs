@@ -326,6 +326,28 @@ Now prepare the linker for the “Re-adjusting” phase in the next chapter
 	 [Requesting program interpreter: /tools/lib64/ld-linux-x86-64.so.2]
 	 
 	
-## 5.10    
+## 5.10
 
-    
+	cd unix
+	./configure --prefix=/tools
+	make
+	TZ=UTC make test
+	make install
+	chmod -v u+w /tools/lib/libtcl8.6.so
+	make install-private-headers
+	ln -sv tclsh8.6 /tools/bin/tclsh
+	
+	
+## 5.13
+按照手册执行make的时候会报错，使用如下命令
+
+	CFLAGS="-L/tools/lib -lpthread" ./configure --prefix=/tools
+	CFLAGS="-L/tools/lib -lpthread" make
+	make install
+
+## 5.15
+编译找不到yacc，一并把flex也装上
+
+	sudo apt-get install byacc flex
+	
+	
