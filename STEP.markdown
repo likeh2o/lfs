@@ -374,6 +374,7 @@ man mount多看看mount的用法
 ## 6.5 这个时候适合一开始提到的
 
 	[文件系统层次结构标准](http://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%B1%82%E6%AC%A1%E7%BB%93%E6%9E%84%E6%A0%87%E5%87%86)
+	
 	[Filesystem Hierarchy Standard](http://www.pathname.com/fhs/pub/fhs-2.3.html)
 	
 执行的时候，下面这句总是报错，没看到那里有问题，直接执行case的命令即可
