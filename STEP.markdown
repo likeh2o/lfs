@@ -367,3 +367,5 @@ Now prepare the linker for the “Re-adjusting” phase in the next chapter
 ## 6.2
 man mount多看看mount的用法
 
+## 6.4 chroot
+第一次接触chroot命令
