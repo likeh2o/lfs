@@ -5,6 +5,7 @@ readme中的翻译文档已经很清晰了，这里只记录必要步骤以及�
 * 系统 
 	* ThinkPad-X61 Intel(R) Core(TM)2 Duo CPU     T7300  @ 2.00GHz
 	* ubuntu 13.04
+	* lfs 7.3
 * 分区 
 	* /
 	* swap:8G (因为没有预留分区，所以从swap中分出一块4G大小的空白分区，试图从/下分，失败)
