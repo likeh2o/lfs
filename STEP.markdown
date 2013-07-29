@@ -364,3 +364,6 @@ Now prepare the linker for the “Re-adjusting” phase in the next chapter
 	chown -R root:root $LFS/tools
 	
 	
+## 6.2
+man mount多看看mount的用法
+
