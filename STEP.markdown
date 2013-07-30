@@ -384,7 +384,8 @@ man mount多看看mount的用法
  	x86_64) ln -sv lib /lib64 && ln -sv lib /usr/lib64 ;;
 	esac
 	
-## 6.7 有两行看似异常的数据
+## 6.7
+两行看似异常的数据，一个是跟重启有关，一个跟声音有关，暂不理会
 
 	/sources/linux-3.8.1/usr/include/linux/kexec.h:49: userspace cannot reference function or variable defined in the kernel
 	/sources/linux-3.8.1/usr/include/linux/soundcard.h:1054: userspace cannot reference function or variable defined in the kernel
