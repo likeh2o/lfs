@@ -390,3 +390,6 @@ man mount多看看mount的用法
 	/sources/linux-3.8.1/usr/include/linux/kexec.h:49: userspace cannot reference function or variable defined in the kernel
 	/sources/linux-3.8.1/usr/include/linux/soundcard.h:1054: userspace cannot reference function or variable defined in the kernel
 	
+## 6.9
+tee glibc-check-log 写入标准输出同时写入文件
+
