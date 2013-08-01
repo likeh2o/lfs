@@ -407,3 +407,8 @@ make 的时候报错
 	
 这个时候想起来，6.5节的时候也报错了，推测是/bin/sh的错误，尝试重新编译bash，网上有很多人碰到这样的问题。
 
+重新编译，然后就不能chroot了，准备重头来过
+
+	/tools/bin/env: /tools/bin/bash: No such file or directory
+	
+
