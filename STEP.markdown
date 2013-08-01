@@ -392,4 +392,18 @@ man mount多看看mount的用法
 	
 ## 6.9
 tee glibc-check-log 写入标准输出同时写入文件
+make 的时候报错
+	
+	 /tools/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../x86_64-unknown-linux-gnu/bin/ar x ../libc_pic.a; \
+ 	rm $(/tools/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../x86_64-unknown-linux-gnu/bin/ar t ../sunrpc/librpc_compat_pic.a | sed 's/^compat-//'); \
+ 	/tools/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../x86_64-unknown-linux-gnu/bin/ar x ../sunrpc/librpc_compat_pic.a; \
+ 	/tools/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../x86_64-unknown-linux-gnu/bin/ar cr libc_pic.a *.os; \
+ 	rm *.os)
+	/bin/sh: command substitution: line 3: syntax error near unexpected token `)'
+	/bin/sh: command substitution: line 3: `/tools/lib/gcc/x86_64-unknown-linux-gnu/4.7.2/../../../../x86_64-unknown-linux-gnu/bin/ar t ../sunrpc/librpc_compat_pic.a | sed 's/^compat-//')'
+	make[1]: *** [/sources/glibc-build/linkobj/libc_pic.a] Error 1
+	make[1]: Leaving directory `/sources/glibc-2.17'
+	make: *** [all] Error 2
+	
+这个时候想起来，6.5节的时候也报错了，推测是/bin/sh的错误，尝试重新编译bash，网上有很多人碰到这样的问题。
 
