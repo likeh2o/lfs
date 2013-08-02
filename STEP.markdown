@@ -341,6 +341,7 @@ Now prepare the linker for the “Re-adjusting” phase in the next chapter
 	
 ## 5.13
 按照手册执行make的时候会报错，使用如下命令
+http://www.linuxfromscratch.org/lfs/errata/stable/
 
 	CFLAGS="-L/tools/lib -lpthread" ./configure --prefix=/tools
 	CFLAGS="-L/tools/lib -lpthread" make
