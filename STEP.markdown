@@ -412,4 +412,11 @@ make 的时候报错
 
 	/tools/bin/env: /tools/bin/bash: No such file or directory
 	
+## 原因排查
+编译到bash的时候发现，还是不能正确编译），google到，在5.15状态的yacc是不对的，要装bison
+
+	sudo apt-get remove byacc
+	sudo apt-get install bison
+
+参看:http://jhshi.me/2012/09/18/lfs-6-9-1-command-substitution-line-3-syntax-error-near-unexpected-token/
 
