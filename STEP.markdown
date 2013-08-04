@@ -420,3 +420,42 @@ make 的时候报错
 
 参看:http://jhshi.me/2012/09/18/lfs-6-9-1-command-substitution-line-3-syntax-error-near-unexpected-token/
 
+## 6.9 redo
+make 通过
+没有必要全部安装语言包，好慢
+
+## 插曲，编译速度相当慢，以后有需要弄一个自动安装的东西
+
+## 6.14
+Note 
+
+## 6.17 
+很慢很慢
+这一节比较无语，有错误不可避免？
+
+## 6.27
+下面命令check的时候，执行到 PASS: tests/rm/v-slash.sh ，卡住了，实在等不下去了，先ctrl+c，继续吧.
+	
+	su nobody -s /bin/bash \
+          -c "PATH=$PATH make RUN_EXPENSIVE_TESTS=yes check"
+
+## 6.33
+测试有异常，忽略之
+
+## 6.49
+Move some programs that do not need to be on the root filesystem
+why???
+
+## 6.50
+arpd 需要Berkeley DB，因为之前调查过这个数据库，这里记一下
+
+## 6.62 vim最后一个包
+
+## 6.63,6.64 留着debug
+
+## 6.65 
+看到这里才更明白，6.2.2,6.2.3
+
+## 电脑关机，昨天整lfs一直没有关机，笔记本过热，把主板烧了，换了两个电容，so，今天关机。
+
+## 明天第七章 7. Setting Up System Bootscripts
