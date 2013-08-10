@@ -464,9 +464,73 @@ arpd 需要Berkeley DB，因为之前调查过这个数据库，这里记一下
 第7章一直看的比较晕
 
 ## 8.3 内核了
-发现 grep 命令没有安装，还好之前没有把/tools下面的命令删除。退出chroot，然后用第一次chroot的命令重新进入，重新编译安装grep，然后退出，用后一次的chroot命令进入。
+发现 grep 命令没有安装，还好之前没有把/tools下面的命令删除。退出chroot，然后用第一次chroot的命令重新进入，
+重新编译安装grep，然后退出，用后一次的chroot命令进入。
 
 make LANG=<host_LANG_value> LC_ALL= menuconfig
 $LANG = zh_CN.UTF-8，这里一定要注意之前 7.13设置 /etc/profile 的时候写对即可。
 
-这个命令执行之后，会出现一个内核配置的界面，再选择上面让注意的内容。
+这个命令执行之后，会出现一个内核配置的界面，再选择上面让提示注意的内容。
+
+## 8.4 使用grub设置引导过程
+让创建一个引导设备，太麻烦，掠过。按着步骤向下，按着自己磁盘分区的情况创建grub配置文件：
+
+	cat > /boot/grub/grub.cfg << "EOF"
+	# Begin /boot/grub/grub.cfg
+	set default=0
+	set timeout=5
+	
+	insmod ext2
+	set root=(hd0,3) # 最开始这里写错了，写成2了，主要是没理解grub对分区的处理，这里需要补习了。
+	
+	menuentry "GNU/Linux, Linux 3.8.1-lfs-7.3" {
+	        linux   /boot/vmlinuz-3.8.1-lfs-7.3 root=/dev/sda3 ro
+	}
+	EOF
+	
+这个文件一开始写错了，进入不了系统。
+
+## 9.3 重启系统
+shutdown -r now 之后，迎接我的是 error no such partition
+在选择启动哪个系统的界面（这里因为只有lfs，所以ubuntu找不到了），e 是编辑grub信息，c是命令行。
+进入命令行模式，使用如下命令，启动lfs：
+
+	set root=(hd0,3)
+	linux   /boot/vmlinuz-3.8.1-lfs-7.3 root=/dev/sda3 ro
+	boot
+	
+注意：以上路径可以tab健提示。成功启动，但是悲剧的是root没有设置密码，也或许是忘记了。
+简单起见，准备进到ubuntu，然后重新chroot，重新设置root密码。
+
+	set root=(hd0,5)
+	linux   /boot/vmlinuz-3.8.0-27-generic root=/dev/sda5 ro
+	initrd  /boot/initrd.img-3.8.0-27-generic
+	boot
+	
+还好有强大的tab提示。进入ubuntu，进行密码设置。
+同时修改grub.cfg文件，让lfs，ubutnu在进入系统的时候是可选的。
+修改后的lfs系统的文件grub配置文件（/boot/grub/grub.cfg，在ubuntu看就是/mnt/lfs/boot/...）如下：
+
+	# Begin /boot/grub/grub.cfg
+	set default=0
+	set timeout=10
+	
+	menuentry "GNU/Linux, Ubuntu" {
+		insmod ext2
+		set root=(hd0,5)
+	        linux   /boot/vmlinuz-3.8.0-27-generic root=/dev/sda5 ro
+		initrd  /boot/initrd.img-3.8.0-27-generic
+	}
+	
+	menuentry "GNU/Linux, Linux 3.8.1-lfs-7.3" {
+		insmod ext2
+		set root=(hd0,3)
+	        linux   /boot/vmlinuz-3.8.1-lfs-7.3 root=/dev/sda3 ro
+	}
+
+重新启动成功。
+
+## 9.4 接下来做什么
+这个不是文档中的接下来做什么
+在安装的过程中，基本都是一知半解的，需要回去咀嚼才行。
+在回味完之后，在看本节。
